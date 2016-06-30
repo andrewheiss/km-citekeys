@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Insert citekey</title>
+
+    <script>
+        document.write('<base href="' + window.KeyboardMaestro.GetVariable('htmlBaseFolder') + '">');
+    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="css/jqueryui.css">
+    <link rel="stylesheet" href="css/citekey_dialog.css">
+
+    <script>
+    $(function() {
+        var pickList = window.KeyboardMaestro.GetVariable('citekeysList').split('|');
+        $( "#combo" ).autocomplete({
+            source: pickList
+        });
+
+        // Submit the form through Keyboard Maestro when enter is pressed
+        $('.citekeys-input').keypress(function (e) {
+            if (e.which == 13) {
+                window.KeyboardMaestro.Submit('OK');
+                return false;
+            }
+        });
+    });
+    </script>
+</head>
+
+<body data-kmwindow="SCREEN(Main,Left,20%),SCREEN(Main,Top,20%),450,145">
+<div>
+    <form class="citekeys-input">
+        <div class="warning">
+            <div class="icon">&nbsp;</div>
+
+            <h2>Insert citekey</h2>
+            <div class="fields">
+                <fieldset>
+                    <span class="ui-widget">
+                        <label>Citekey:</label>
+                        <input type="text" id="combo" name="citekeyResult" autofocus>
+                    </span>
+                </fieldset>
+            </div>
+
+            <div class="actions">
+                <input type="button" value="Cancel" class="btn cancel" onclick="window.KeyboardMaestro.Cancel('Cancel')" />
+                <input type="button" value="Confirm" class="btn confirm" onclick="window.KeyboardMaestro.Submit('OK')" />
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>485530074.30928999</real>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>Text</key>
+						<string>Include the full path to km-citekeys. Don't use ~; instead use /Users/&lt;your username&gt;</string>
+						<key>Title</key>
+						<string>Set base folder</string>
+					</dict>
+					<dict>
+						<key>ActionNotes</key>
+						<string>This should be the path to an HTML assets folder containing the JS and CSS that supports this HTML prompt.</string>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>/Users/andrew/Research/Markdown%20magic/km-citekeys/</string>
+						<key>Variable</key>
+						<string>htmlBaseFolder</string>
+					</dict>
+					<dict>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>Text</key>
+						<string>Select the list of citekeys generated with pandoc-citekeys (https://github.com/andrewheiss/pandoc-citekeys)</string>
+						<key>Title</key>
+						<string>List of citekeys</string>
+					</dict>
+					<dict>
+						<key>Destination</key>
+						<string>Variable</string>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>ReadFile</string>
+						<key>Name</key>
+						<string>5FC71561-1C82-4BE2-AEB2-CB3F487A7CF7</string>
+						<key>RedundandDisplayName</key>
+						<string>Default Clipboard</string>
+						<key>Source</key>
+						<string>~/Research/Markdown magic/pandoc-citekeys/citekeys.txt</string>
+						<key>Variable</key>
+						<string>citekeysList</string>
+					</dict>
+					<dict>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>Text</key>
+						<string>This creates a single pipe-delimited string that jQuery can use later</string>
+						<key>Title</key>
+						<string>Concatenate all citekeys to one string</string>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>IgnoreCaseRegEx</string>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>SearchReplaceVariable</string>
+						<key>Replace</key>
+						<string>|</string>
+						<key>Search</key>
+						<string>\n</string>
+						<key>Variable</key>
+						<string>citekeysList</string>
+					</dict>
+					<dict>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>Text</key>
+						<string>Set the path to citekey_dialog.html</string>
+						<key>Title</key>
+						<string>Pipe citekeys to HTML prompt</string>
+					</dict>
+					<dict>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>CustomPrompt</string>
+						<key>Path</key>
+						<string>/Users/andrew/Research/Markdown magic/km-citekeys/citekey_dialog.html</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>UseText</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>Text</key>
+						<string>Keyboard Maestro makes the value of the input field available as a variable (in this `casecitekeyResult`). Insert it by pasting.</string>
+						<key>Title</key>
+						<string>Insert the selected citekey</string>
+					</dict>
+					<dict>
+						<key>Action</key>
+						<string>ByPasting</string>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>InsertText</string>
+						<key>Text</key>
+						<string>%Variable%citekeyResult%</string>
+					</dict>
+					<dict>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Comment</string>
+						<key>Text</key>
+						<string></string>
+						<key>Title</key>
+						<string>Reset all the variables</string>
+					</dict>
+					<dict>
+						<key>ActionName</key>
+						<string>Clean up variables</string>
+						<key>Actions</key>
+						<array>
+							<dict>
+								<key>MacroActionType</key>
+								<string>SetVariableToText</string>
+								<key>Text</key>
+								<string>%Delete%</string>
+								<key>Variable</key>
+								<string>citekeysList</string>
+							</dict>
+							<dict>
+								<key>MacroActionType</key>
+								<string>SetVariableToText</string>
+								<key>Text</key>
+								<string>%Delete%</string>
+								<key>Variable</key>
+								<string>citekeyResult</string>
+							</dict>
+						</array>
+						<key>IsDisclosed</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Group</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>488925373.15519202</real>
+				<key>ModificationDate</key>
+				<real>488947019.23183101</real>
+				<key>Name</key>
+				<string>Insert citekey</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>40</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>6400</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>315969AE-1579-4D06-A829-602A62FAF063</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>_Macro Examples</string>
+		<key>ToggleMacroUID</key>
+		<string>8D279221-F8CA-4E02-9FD5-E3B304169471</string>
+		<key>UID</key>
+		<string>13562EDB-F3B7-43DE-A818-71EF2E13C9F9</string>
+	</dict>
+</array>
+</plist>
