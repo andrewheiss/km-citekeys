@@ -7,7 +7,7 @@ Displays an autocomplete dialog box populated with citekeys from a [BibTeX file]
 ## Instructions
 
 1. Set up [pandoc-citekeys](https://github.com/andrewheiss/pandoc-citekeys) to periodically write a list of citekeys to a text file
-2. Open `Insert citekey.kmmacros` in Keyboard Maestro and make these chnages:
+2. Open `Insert citekey.kmmacros` in Keyboard Maestro and make these changes:
     1. Set the `htmlBaseFolder` variable to this directory
     2. Set the `citekeyList` variable to the text file of citekeys
     3. Set the path to the custom HTML prompt in `citekey_dialog.html`
